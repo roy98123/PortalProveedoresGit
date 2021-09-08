@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%: Page.Title %></title>
+
+  <asp:PlaceHolder runat="server">
+      <%: Scripts.Render("~/bundles/modernizr") %>
+  </asp:PlaceHolder>
+
+  <webopt:BundleReference runat="server" Path="~/Content/css" />
+
+  <link href="Content/js/vendor/jquery.min.js" rel="stylesheet" />
+  <!--[if lt IE 9]>
+      <script src="js/vendor/html5shiv.min.js"></script>
+      <script src="js/vendor/respond.min.js"></script>
+  <![endif]-->
+
+  <asp:ContentPlaceHolder ID="PlaceHolderCSS" runat="server">
+  </asp:ContentPlaceHolder>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="Content/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="Content/dist/css/adminlte.min.css">
+
+
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="Content/plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="Content/dist/css/adminlte.min.css">
+    <style>
+         body{
+            padding: 0px;
+            margin: 0px;
+            }
+    </style>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+<form runat="server">
+    <asp:ScriptManager runat="server">
+        <Scripts>
+            <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
+            <%--Framework Scripts--%>
+            <asp:ScriptReference Name="MsAjaxBundle" />
+            <asp:ScriptReference Name="jquery" />
+            <asp:ScriptReference Name="bootstrap" />
+            <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
+            <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
+            <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
+            <asp:ScriptReference Name="GridView.js" Assembly="System.Web" Path="~/Scripts/WebForms/GridView.js" />
+            <asp:ScriptReference Name="DetailsView.js" Assembly="System.Web" Path="~/Scripts/WebForms/DetailsView.js" />
+            <asp:ScriptReference Name="TreeView.js" Assembly="System.Web" Path="~/Scripts/WebForms/TreeView.js" />
+            <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
+            <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
+            <asp:ScriptReference Name="WebFormsBundle" />
+            <%--Site Scripts--%>
+        </Scripts>
+
+
+    </asp:ScriptManager>
+
+      <!-- Navbar -->
+      <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+        <!-- Left navbar links -->
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          </li>
+          <li class="nav-item d-none d-sm-inline-block">
+            <a runat="server" href="~/Solicitudes.aspx" class="nav-link">Inicio</a> 
+          </li>
+        </ul>
+
+        <!-- Right navbar links -->
+        <ul class="navbar-nav ml-auto">
+            <!-- Navbar Search -->
+
+
+            <!-- Messages Dropdown Menu -->
+            
+
+            <li class="nav-item dropdown">
+                <a href="~/Logout.aspx" runat="server" class="btn btn-link">
+                    Cerrar Sesión
+                </a>
+            </li>
+        </ul>
+      </nav>
+      <!-- /.navbar -->
+
+
+    <!-- Main Sidebar Container -->
+    <aside style="background-color: #0275d8; color:white;" class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="#" class="brand-link">
+        <img src="Content/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+        <span class="brand-text font-weight-light">Portal Proveedores</span>
+        </a>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <!-- Sidebar user panel (optional) -->
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <%--<div class="image">
+                    <img src="Content/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                </div>--%>
+                <div class="info">
+                    <asp:ContentPlaceHolder ID="NameContent" runat="server">
+                        <a href="#" class="d-block">
+                            Sin sesión iniciada
+                        </a>
+                    </asp:ContentPlaceHolder>
+                    <asp:ContentPlaceHolder ID="RolePlaceHolder" runat="server">
+                            <a href="#" class="d-block">
+                                Sin Rol
+                            </a>
+                    </asp:ContentPlaceHolder>
+                </div>
+            </div>
+
+            <!-- Sidebar Menu -->
+            <nav>
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class
+                    with font-awesome or any other icon font library -->
+                    <li class="nav-item">
+                        <a runat="server" href="~/" class="nav-link"><i class="nav-icon fas fa-home"></i><p>Inicio</p></a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/CFDI.aspx" class="nav-link"><i class="nav-icon fas fa-file-invoice"></i><p>CFDI</p></a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/RegisterCompany.aspx" class="nav-link"><i class="nav-icon fas fa-building"></i><p>Registrar Empresa</p></a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/Compra.aspx" class="nav-link"><i class="nav-icon fas fa-shopping-cart"></i><p>Nueva Compra</p></a>
+                    </li>
+                    <li class="nav-item">
+                        <a runat="server" href="~/Recepcion.aspx" class="nav-link"><i class="nav-icon fas fa-check-circle"></i><p>Recepción de Compra</p></a>
+                    </li>
+                    <asp:ContentPlaceHolder ID="MenuPlaceHolder" runat="server">
+
+                    </asp:ContentPlaceHolder>
+                </ul>
+            </nav>
+        <!-- /.sidebar-menu -->
+        </div>
+        <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0"><%: Page.Title %></h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Inicio</a></li>
+                            <li class="breadcrumb-item active"><%: Page.Title %></li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+
+        <!-- Main content -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+
+                    <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                    </asp:ContentPlaceHolder>
+
+                    <hr />
+                    <footer>
+                        <p>&copy; <%: DateTime.Now.Year %> - Portal Proveedores</p>
+                    </footer>
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    
+        
+
+
+    <script src="Content/js/vendor/bootstrap.min.js"></script>
+    <script src="Content/js/app.js"></script>
+    <script src="Content/js/alertas.js"></script>
+    <!-- REQUIRED SCRIPTS -->
+    
+    <!-- jQuery -->
+    <script src="Content/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="Content/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="Content/dist/js/adminlte.min.js"></script>
+
+    <script src="Content/js/general.js"></script>
+    
+    <asp:contentplaceholder id="ContentJS" runat="server">
+    </asp:contentplaceholder>
+
+</form>
+
+
+
+</div>
+<!-- ./wrapper -->
+
+</body>
+</html>
