@@ -23,7 +23,6 @@ $(document).ready(function () {
         //console.log(element['Attributes'][1]['AttrValue'])
         $('#empresas0 ').append('<option value="' + element['Attributes'][1]['AttrValue'] + '">' + element['Attributes'][0]['AttrValue'] + '</option>');
     });
-    T
 
     $('#btnAgregarEmpresa').click(function () {
         //$('#ContenidoDinamico').append('<span id="texto">Texto ingresado</span>');

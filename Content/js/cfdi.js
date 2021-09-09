@@ -1,5 +1,4 @@
-﻿console.log('cfdi.js');
-
+﻿
 if (document.getElementById("MainContent_errores_xml").value.length ) {
     let texto = document.getElementById("MainContent_errores_xml").value;
     Swal.fire({
@@ -21,6 +20,20 @@ if (document.getElementById("MainContent_success_xml_titulo").value.length) {
 }
 
 // Asignamos la función al botón submit del  formuluario
+document.getElementById('MainContent_XML_file').onchange = loadXML;
+function loadXML() {
+    // Pasamos el archivo xml a Base64
+    let input = document.getElementById('MainContent_XML_file');
+    let file = input.files[0];
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        let base64 = reader.result;
+        document.getElementById('MainContent_XML_file_b64').value = base64; // Lo asignamos a un input ya que no podemos retornar un valor de una Función anónima
+    }
+}
+
+// Asignamos la función al botón submit del  formuluario
 document.getElementById("btnRegistrarCFDI").onclick = insertCFDI;
 function insertCFDI() {
 
@@ -34,27 +47,10 @@ function insertCFDI() {
         return;
     } 
 
-
-    console.log("fecha_emision: ", document.getElementById('MainContent_fecha_emision').value);
-    console.log("fecha_certificacion: ", document.getElementById('MainContent_fecha_certificacion').value);
-    console.log("fecha_ultima_actualizacion: ", document.getElementById('MainContent_actualizacion_sat').value);
-
-    // Pasamos el archivo xml a Base64
-    let input = document.getElementById('MainContent_XML_file');
-    let file = input.files[0];
-    let reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = function () {
-        let base64 = reader.result;
-        console.log("base64: ", base64)
-        console.log("base64.data: ", base64.data)
-        document.getElementById('MainContent_XML_file_b64').value = base64; // Lo asignamos a un input ya que no podemos retornar un valor de una Función anónima
-    }
-
     let fecha_certificacion = document.getElementById('MainContent_fecha_certificacion').value;
     fecha_certificacion == "" ? fecha_certificacion = null : "";
-    console.log("fecha_certificacion: ",fecha_certificacion);
     // Le damos formato a los datos del fomurlario para enviarlos al Back
+    setTimeout(function () { }, 3000);
     let data = {
         factura: {
             xml:                    document.getElementById('MainContent_XML_file_b64').value, // Mandamos el valor del input del archivo en B64
@@ -87,7 +83,6 @@ function insertCFDI() {
         dataType: "json",                                          // formato de transmición de datos
         async: true,                                               // si es asincrónico o no
         success: function (resultado) {                            // función que va a ejecutar si el pedido fue exitoso
-            console.log(resultado.d)
             // Mostramos un sweetAlert si la peticón Ajax salio correctamente
             Swal.fire({
                 icon: 'success',
@@ -137,6 +132,7 @@ function validarFormulario() {
  function limpiarFormulario(){
      let ids = [
          "XML_file",
+         "XML_file_b64",
          "folio",
          "tipo_comprobante",
          "serie",

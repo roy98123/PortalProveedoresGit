@@ -40,6 +40,15 @@ namespace Grow.PortalProveedores {
         protected global::System.Web.UI.WebControls.FileUpload XML_file;
         
         /// <summary>
+        /// Control btnAnalizarXML.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnAnalizarXML;
+        
+        /// <summary>
         /// Control XML_file_b64.
         /// </summary>
         /// <remarks>

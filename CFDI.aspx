@@ -42,9 +42,11 @@
                                 <div class="col-8">
                                     <asp:FileUpload class="form-control" ID="XML_file" style="min-width:-webkit-fill-available;" runat="server" accept=".xml" />
                                     <small class="form-text text-danger" id="error_XML_file"></small>
+                                    <small class="form-text text-danger" id="error_XML_file_b64"></small>
+
                                 </div>
                                     <div class="col">
-                                    <asp:Button type="button" CssClass="btn btn-primary" Text="Analizar XML" runat="server" OnClick="btnRegistarCFDI_Click" />
+                                    <asp:Button type="button" CssClass="btn btn-primary" Text="Analizar XML" runat="server" OnClick="btnRegistarCFDI_Click" ID="btnAnalizarXML" />
                                 </div>
                             </div>
                         </div>
@@ -55,7 +57,7 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" id="XML_file_b64" value="" runat="server" hidden />
+                <input type="text" id="XML_file_b64" value="" runat="server" hidden/>
 
                 <div class="form-group">
                     <label for="tipo_comprobante">Tipo de Comprobante</label><small class="text-danger">*</small>
